@@ -50,19 +50,25 @@ int main(int argc, char *argv[]) {
     
     std::string filenameGT;
     std::string filenameDT;
+    float ratio= 0;
     // Read arguments and set parameters
     if(argc == 1) {
         // Defaults
         std::cout << "Using default video input" << std::endl;
         printUsage(argv[0]);
-    } else if((argc == 2 && std::string(argv[1]) == "--help") || argc > 3) {
+    } else if((argc == 2 && std::string(argv[1]) == "--help") || argc > 4) {
         printUsage(argv[0]);
         return 0;
     } else if(argc == 2) {
         printUsage(argv[0]);
-    } else {
+    } else if(argc==3){
         filenameGT = argv[1];
         filenameDT = argv[2];
+    } else{
+        filenameGT = argv[1];
+        filenameDT = argv[2];
+        ratio = float(std::atoi(argv[3]))/100.0;
+
     }
 
     // Initialize system objects
@@ -70,9 +76,9 @@ int main(int argc, char *argv[]) {
   
     // Start video processing
     try {
-            EvalDetectPerformance eval(filenameGT,filenameDT);
+            EvalDetectPerformance eval(filenameGT,filenameDT, filenameDT+"_results");
             eval.readData();
-            eval.processData();
+            eval.processData(ratio);
             eval.printResults();
 
         /*    int key = cv::waitKey(10) & 0xFF;

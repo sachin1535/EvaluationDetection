@@ -41,19 +41,22 @@ public:
 
     ~EvalDetectPerformance();
     void readData();
-    void processData();
+    void processData(float ratio);
     void printResults();
-    EvalDetectPerformance(std::string filenameGT,std::string filenameDT);
+    EvalDetectPerformance(std::string filenameGT,std::string filenameDT, std::string filenameRES);
     int totalFrames = 0;
+    int totalGTBlobs = 0;
     int falsePos  = 0 ;
     int falseNeg = 0;
     int truePos = 0;
     int trueNeg = 0;
+    int missMatches = 0;
 private:
     static EvalDetectPerformance* instance;
 
     std::ifstream fileGT;
     std::ifstream fileDT;
+    std::ofstream fileRES;
     std::unordered_map<int, std::vector<blobGTInfo> >gtDict;
     std::unordered_map<int, std::vector<blobDTInfo> > dtDict;
     
