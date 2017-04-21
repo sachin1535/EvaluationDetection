@@ -50,13 +50,14 @@ int main(int argc, char *argv[]) {
     
     std::string filenameGT;
     std::string filenameDT;
-    float ratio= 0;
+    std::string pathres = "/home/mw4vision/Desktop/sachin/Evaluation/EvaluationDetectionPerformance/Results/DT/";
+    float ratio= 0.0;
     // Read arguments and set parameters
     if(argc == 1) {
         // Defaults
         std::cout << "Using default video input" << std::endl;
         printUsage(argv[0]);
-    } else if((argc == 2 && std::string(argv[1]) == "--help") || argc > 4) {
+    } else if((argc == 2 && std::string(argv[1]) == "--help") || argc > 5) {
         printUsage(argv[0]);
         return 0;
     } else if(argc == 2) {
@@ -76,10 +77,18 @@ int main(int argc, char *argv[]) {
   
     // Start video processing
     try {
-            EvalDetectPerformance eval(filenameGT,filenameDT, filenameDT+"_results");
-            eval.readData();
-            eval.processData(ratio);
-            eval.printResults();
+            EvalDetectPerformance eval(filenameGT,filenameDT, pathres+ argv[4] +"_results");
+            ratio = 0.1;
+            for(int i=0;i<10;i++)
+            {
+                eval.readData();
+                cv::waitKey(1000);
+                eval.processData(ratio+float((i/10.0)));
+                eval.printResults(); 
+                eval.reset();
+                cv::waitKey(1000);
+            }
+            
 
         /*    int key = cv::waitKey(10) & 0xFF;
             if(key == 27) { // Escape pressed

@@ -40,6 +40,7 @@ void EvalDetectPerformance::readData()
     //Extracting ground truth data 
     while(std::getline(fileGT, line))
     {
+        std::cout<<line<<std::endl;
         std::istringstream iss(line);
         if (!(iss >> gtdata.trackID >> gtdata.xmin >> gtdata.ymin >> gtdata.xmax >> gtdata.ymax >> gtdata.frameno >> gtdata.inscene >> gtdata.occluded >> gtdata.interpolated >> gtdata.label))
         {
@@ -121,6 +122,19 @@ float findOverlap(blobGTInfo gtRect,blobDTInfo dtRect)
 
     return (float(overlap.area()) / float(combine.area()));
 }
+void EvalDetectPerformance::reset()
+{
+    falsePos = 0;
+    falseNeg = 0;
+    truePos = 0;
+    missMatches = 0;
+    sfda = 0.0;
+  /*  fileGT.close();
+    fileDT.close(); 
+    fileGT.clear();                 // clear fail and eof bits
+    fileGT.seekg(0, std::ios::beg); // back to the start!*/
+
+}
 void EvalDetectPerformance::printResults()
 {
     std::cout<<"Analysis Results: "<<std::endl;
@@ -158,12 +172,14 @@ void EvalDetectPerformance::printResults()
     fileRES<<"False Negative Rate <FN/FN+TP>\t"<< float(falseNeg)/float(truePos+falseNeg) <<std::endl;
     // F -measure 
     fileRES<<"F- Measure <2*precision*recall/precision+recall>\t"<< (2*precision*recall)/ (precision+recall) <<std::endl;
+    fileRES<< "SFDA normalised Value\t"<< sfda <<std::endl;
+    fileRES<<std::endl;
 
 }
 void EvalDetectPerformance::processData(float ratio)
 {
     try{
-
+        std::unordered_map<int, std::vector<blobDTInfo> > dtDictCopy = dtDict;
         float sumFDAt = 0.0;
         for(auto keyval :gtDict)
         {
@@ -190,14 +206,14 @@ void EvalDetectPerformance::processData(float ratio)
                 int lengt = gtleftCorners.size();
                 int lendt = dtleftCorners.size();
                 // std::cout<<"lengt \t" <<lengt<<"\t lendt \t"<<lendt<<std::endl;
-                if(lendt > lengt )
+             /*   if(lendt > lengt )
                 {
                     falsePos = falsePos + (lendt-lengt);
                 }
                 else
                 {
                     falseNeg = falseNeg+ (lengt-lendt);   
-                }
+                }*/
                 float totalOvrLapRatio = 0.0;
                 for(int i =0;i<gtleftCorners.size();i++)
                 {
@@ -219,18 +235,20 @@ void EvalDetectPerformance::processData(float ratio)
                     {
                         truePos = truePos + 1;
                         totalOvrLapRatio = totalOvrLapRatio +1.0;
+                        //removing currently compared element 
+                        dtDict[keyval.first].erase(dtDict[keyval.first].begin()+index);
+                        dtleftCorners.erase(dtleftCorners.begin()+index);
                     }
                     else
                     {
                         missMatches++;
+                        falseNeg++;
                         float ovrLap = findOverlap(keyval.second[i],dtDict[keyval.first][index]);
                         totalOvrLapRatio = totalOvrLapRatio + ovrLap; 
                     }
 
-                    //removing currently compared element 
-                    dtDict[keyval.first].erase(dtDict[keyval.first].begin()+index);
-                    dtleftCorners.erase(dtleftCorners.begin()+index);
                 }
+                falsePos += dtleftCorners.size();
                 // Calculating the FDA values 
                 float FDAt = totalOvrLapRatio / float((lendt+lengt)/2);
                 sumFDAt += FDAt;
@@ -241,7 +259,9 @@ void EvalDetectPerformance::processData(float ratio)
 
         
         }
-        std::cout << "SFDA normalised Value\t"<< (sumFDAt / float(totalFrames)) <<std::endl;
+        sfda = (sumFDAt / float(totalFrames));
+        std::cout << "SFDA normalised Value\t"<< sfda <<std::endl;
+        dtDict = dtDictCopy;
     }catch(const std::exception& ex) {
         std::cerr << "Error occurred: " << ex.what() << std::endl;
     }

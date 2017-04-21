@@ -43,6 +43,7 @@ public:
     void readData();
     void processData(float ratio);
     void printResults();
+    void reset();
     EvalDetectPerformance(std::string filenameGT,std::string filenameDT, std::string filenameRES);
     int totalFrames = 0;
     int totalGTBlobs = 0;
@@ -51,6 +52,8 @@ public:
     int truePos = 0;
     int trueNeg = 0;
     int missMatches = 0;
+    float sfda = 0.0;
+
 private:
     static EvalDetectPerformance* instance;
 

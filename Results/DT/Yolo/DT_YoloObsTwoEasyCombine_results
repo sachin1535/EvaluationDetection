@@ -1,0 +1,140 @@
+Analysis Results: 
+True Positives	 3727
+missMatches	70
+False Positives	72
+False Negatives	70
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.981048
+Recall  <TP/TP+FN>	0.981564
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.0184356
+F- Measure <2*precision*recall/precision+recall>	0.981306
+SFDA normalised Value	0.980572
+
+Analysis Results: 
+True Positives	 3726
+missMatches	71
+False Positives	57
+False Negatives	71
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.984933
+Recall  <TP/TP+FN>	0.981301
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.018699
+F- Measure <2*precision*recall/precision+recall>	0.983113
+SFDA normalised Value	0.980371
+
+Analysis Results: 
+True Positives	 3720
+missMatches	77
+False Positives	63
+False Negatives	77
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.983347
+Recall  <TP/TP+FN>	0.979721
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.0202792
+F- Measure <2*precision*recall/precision+recall>	0.98153
+SFDA normalised Value	0.979298
+
+Analysis Results: 
+True Positives	 3688
+missMatches	110
+False Positives	95
+False Negatives	110
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.974888
+Recall  <TP/TP+FN>	0.971037
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.0289626
+F- Measure <2*precision*recall/precision+recall>	0.972959
+SFDA normalised Value	0.973545
+
+Analysis Results: 
+True Positives	 3557
+missMatches	254
+False Positives	226
+False Negatives	254
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.940259
+Recall  <TP/TP+FN>	0.933351
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.0666492
+F- Measure <2*precision*recall/precision+recall>	0.936792
+SFDA normalised Value	0.95293
+
+Analysis Results: 
+True Positives	 3083
+missMatches	784
+False Positives	700
+False Negatives	784
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.814962
+Recall  <TP/TP+FN>	0.797259
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.202741
+F- Measure <2*precision*recall/precision+recall>	0.806013
+SFDA normalised Value	0.889334
+
+Analysis Results: 
+True Positives	 1957
+missMatches	1960
+False Positives	1826
+False Negatives	1960
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.517314
+Recall  <TP/TP+FN>	0.499617
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.500383
+F- Measure <2*precision*recall/precision+recall>	0.508312
+SFDA normalised Value	0.775648
+
+Analysis Results: 
+True Positives	 904
+missMatches	3065
+False Positives	2879
+False Negatives	3065
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.238964
+Recall  <TP/TP+FN>	0.227765
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.772235
+F- Measure <2*precision*recall/precision+recall>	0.23323
+SFDA normalised Value	0.689232
+
+Analysis Results: 
+True Positives	 289
+missMatches	3703
+False Positives	3494
+False Negatives	3703
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.0763944
+Recall  <TP/TP+FN>	0.0723948
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.927605
+F- Measure <2*precision*recall/precision+recall>	0.0743408
+SFDA normalised Value	0.647031
+
+Analysis Results: 
+True Positives	 58
+missMatches	3936
+False Positives	3725
+False Negatives	3936
+Total frames  with DT or GT valid	2076
+Total GT Detections	3995
+Precision <TP/TP+FP> 	0.0153317
+Recall  <TP/TP+FN>	0.0145218
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.985478
+F- Measure <2*precision*recall/precision+recall>	0.0149158
+SFDA normalised Value	0.63129
+

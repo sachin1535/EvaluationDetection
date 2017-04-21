@@ -1,0 +1,13 @@
+Analysis Results: 
+True Positives	 2149
+missMatches	3110
+False Positives	140
+False Negatives	106
+Total frames  with DT or GT valid	2765
+Total GT Detections	5365
+Precision <TP/TP+FP> 	0.938838
+Recall  <TP/TP+FN>	0.952993
+False Positive Rate <FP/FP+TN>	1
+False Negative Rate <FN/FN+TP>	0.0470067
+F- Measure <2*precision*recall/precision+recall>	0.945863
+SFDA normalised Value	0.461329
